@@ -8,7 +8,7 @@ import cv2
 import numpy as np
 
 # Set the path to Tesseract OCR executable
-pytesseract.pytesseract.tesseract_cmd = '//tesseract'  
+pytesseract.pytesseract.tesseract_cmd = '//tesseract.'  
 def run_ocr(image_path, ocr_engine_path=None):
     """Runs OCR on an image file."""
     if ocr_engine_path is not None:

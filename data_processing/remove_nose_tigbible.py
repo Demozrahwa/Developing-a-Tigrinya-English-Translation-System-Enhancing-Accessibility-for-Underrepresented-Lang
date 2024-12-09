@@ -2,7 +2,6 @@
 import pandas as pd
 import re
 
-import re
 import csv
 
 # Define the input and output file paths
