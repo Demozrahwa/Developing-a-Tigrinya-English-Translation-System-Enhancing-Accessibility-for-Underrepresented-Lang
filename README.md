@@ -1,42 +1,60 @@
-# Tigrinya-English Translation Project
+# Tigrinya-English Translation System
 
-This project focuses on building and fine-tuning machine translation models for Tigrinya-to-English and English-to-Tigrinya translations. The primary objective is to enhance translation quality for underrepresented languages like Tigrinya by leveraging state-of-the-art machine learning models.
-
----
-
-## Project Structure
-
-- **Datasets**:
-  - Datasets are located in the `/content/drive/MyDrive/Capstone/Dataset_csv/` directory.
-  - Key files include:
-    - `en_to_ti_full_datasets.csv` (English-to-Tigrinya)
-    - `ti_to_en_full_datasets.csv` (Tigrinya-to-English)
-  - Each dataset contains over 90,000 aligned sentences.
-  - Train-test splits and sampled datasets are provided for experimentation.
-
-- **Models Used**:
-  - **Helsinki-NLP/opus-mt-ti-en**: Used for Tigrinya-to-English translations.
-  - **Helsinki-NLP/opus-mt-en-ti**: Used for English-to-Tigrinya translations.
-  - **facebook/m2m100_418M**: A multilingual model for both translation directions.
-  - **t5-large**: Fine-tuned for translation tasks but demonstrated limited success.
-
-- **Key Steps**:
-  1. **Baseline Evaluation**: Assessed BLEU scores using pre-trained models as a benchmark.
-  2. **Fine-Tuning**: Trained models on sampled datasets (10% of the full training set) to improve translation performance.
-  3. **Evaluation**: Tested models on validation and test datasets using metrics such as BLEU, chrF++, and COMET.
+## Project Overview
+This project focuses on developing a machine translation system between Tigrinya and English. Tigrinya, a low-resource language spoken in Eritrea and Ethiopia, has limited digital tools for linguistic support. The project leverages transformer-based models such as Helsinki-NLP and M2M100, fine-tuned on a custom dataset of over 350,000 bilingual sentence pairs.
 
 ---
 
-## Installation
+## Features
+- **Tigrinya-to-English Translation:** Translate Tigrinya sentences into English with high accuracy.
+- **English-to-Tigrinya Translation:** Translate English sentences into Tigrinya.
+- **Custom Fine-Tuning:** Fine-tuned pre-trained models to improve translation quality using a diverse dataset.
+- **Evaluation Metrics:** Includes BLEU and chrF++ scores for assessing translation performance.
 
-### Prerequisites
-1. Python 3.9 or higher.
-2. Libraries:
-   - `transformers`
-   - `datasets`
-   - `evaluate`
-   - `torch` (with CUDA support for GPU)
+---
 
-### Install Dependencies
+## File Structure
+```plaintext
+Capstone/
+│
+├── Dataset_csv/
+│   ├── en_to_ti_sampled_test.csv          # Sampled English-to-Tigrinya test dataset
+│   ├── en_to_ti_sampled_train.csv         # Sampled English-to-Tigrinya training dataset
+│   ├── ti_to_en_sampled_train.csv         # Sampled Tigrinya-to-English training dataset
+│   ├── ti_to_en_sampled_val.csv           # Sampled Tigrinya-to-English validation dataset
+│   ├── en_to_ti_val.csv                   # Full English-to-Tigrinya validation dataset
+│   ├── ti_to_en_val.csv                   # Full Tigrinya-to-English-to-validation dataset
+│   ├── ti_to_en_test.csv                  # Full Tigrinya-to-English test dataset
+│   ├── en_to_ti_test.csv                  # Full English-to-Tigrinya test dataset
+│   ├── en_to_ti_train.csv                 # Full (English-to-Tigrinya) training dataset 
+│   ├── ti_to_en_train.csv                 # Full (Tigrinya-to-English) training dataset
+│
+├── models/
+│   ├── m2m100_model.ipynb                 # M2M100 model notebook
+│   ├── En_Ti_Helsinki-NLP_model.ipynb     # Helsinki-NLP model notebook (English to Tigrinya)
+│   ├── Ti_En_Helsinki-NLP_model.ipynb     # Helsinki-NLP model notebook (Tigrinya to English)
+|   |── T5_model.ipynb                     # T5_BERT model
+|
+│── opus-mt-en-ti_fine_tuned/             # Fine-tuned Helsinki-NLP model (English-to-Tigrinya)
+│── opus-mt-ti-en_fine_tuned/             # Fine-tuned Helsinki-NLP model (Tigrinya-to-English)
+│── t5_large_fine_tuned_model/            # Fine-tuned T5 model
+|
+data_processing/
+│   ├── clean_txt.py                       # Script to clean raw text files
+│   ├── combine_eng_tig.py                 # Script to combine English and Tigrinya datasets
+│   ├── convert_tig_to_csv.py              # Convert raw Tigrinya text to CSV format
+│   ├── remove_duplicates_translation_pairs.py # Script to remove duplicate translations
+│   ├── rename_column.py                   # Rename columns in CSV files
+│   ├── PDF_to_text.py                     # OCR conversion from PDF to text
+│
+├── README.md                              # Project README
+├── requirements.txt                       # Python dependencies
+|                           
+
+## How to Run the Project
+
+### Step 1: Clone the Repository
+To get started, clone this repository to your local machine:
 ```bash
-pip install transformers datasets evaluate torch
+git clone https://github.com/your-repo/tigrinya-translation.git
+cd tigrinya-translation
