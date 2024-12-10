@@ -14,7 +14,7 @@ This project focuses on developing a machine translation system between Tigrinya
 ---
 
 ## File Structure
-
+```plaintext
 Capstone/
 │
 ├── Dataset_csv/
@@ -50,7 +50,7 @@ data_processing/
 ├── README.md                              # Project README
 ├── requirements.txt                       # Python dependencies
 |                           
-
+```
 ## How to Run the Project
 
 ### Step 1: Clone the Repository
@@ -59,3 +59,42 @@ To get started, clone this repository to your local machine:
 ```bash
 git clone https://github.com/your-repo/tigrinya-translation.git
 cd tigrinya-translation
+```
+### Step 2: Install Dependencies
+Ensure you have Python 3.9 or higher installed. Install the required dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 3: Preprocess Data
+Run the data preprocessing scripts located in the data_processing folder.
+
+### Step 4: Fine-Tune Models
+Fine-tune a pre-trained model (e.g., Helsinki-NLP or M2M100) using the training dataset:
+```bash
+python fine_tune.py --model_name "Helsinki-NLP/opus-mt-en-ti" \
+--train_file Dataset_csv/en_to_ti_sampled_train.csv \
+--val_file Dataset_csv/en_to_ti_sampled_val.csv \
+--output_dir models/opus-mt-en-ti_fine_tuned
+```
+
+
+### Step 5: Evaluate Models
+Evaluate the model performance using BLEU and chrF++ metrics:
+
+### Dataset Availability
+The datasets used in this project, including processed CSV files and raw data sources, are available upon request. If you would like access to the datasets or have questions, please contact rahwatseagy5@gmail.com.
+
+### Acknowledgments
+Hugging Face Transformers Library
+Helsinki-NLP for pre-trained models
+M2M100 by Facebook AI Research
+TigrinyaNLP/corpus
+
+### Future Work
+UI Development: Build a user interface where users can upload documents and get translations.
+Expand Dataset: Collect more parallel datasets to improve model performance.
+Optimize Models: Experiment with additional transformer architectures for enhanced accuracy.
+Collaboration: Open to collaboration with researchers and enthusiasts in NLP and underrepresented language translation.
+
