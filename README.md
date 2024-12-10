@@ -6,15 +6,15 @@ This project focuses on developing a machine translation system between Tigrinya
 ---
 
 ## Features
-- **Tigrinya-to-English Translation:** Translate Tigrinya sentences into English with high accuracy.
+- **Tigrinya-to-English Translation:** Translate Tigrinya sentences into English accurately.
 - **English-to-Tigrinya Translation:** Translate English sentences into Tigrinya.
 - **Custom Fine-Tuning:** Fine-tuned pre-trained models to improve translation quality using a diverse dataset.
-- **Evaluation Metrics:** Includes BLEU and chrF++ scores for assessing translation performance.
+
 
 ---
 
 ## File Structure
-```plaintext
+
 Capstone/
 │
 ├── Dataset_csv/
@@ -55,6 +55,7 @@ data_processing/
 
 ### Step 1: Clone the Repository
 To get started, clone this repository to your local machine:
+
 ```bash
 git clone https://github.com/your-repo/tigrinya-translation.git
 cd tigrinya-translation
